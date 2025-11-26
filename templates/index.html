@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot RF/MEI</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .chat-container { width: 400px; background: white; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 8px; }
+        .chat-box { height: 300px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; background: #fafafa; }
+        .user-msg { text-align: right; color: blue; margin: 5px 0; }
+        .bot-msg { text-align: left; color: green; margin: 5px 0; }
+        input { width: 70%; padding: 10px; }
+        button { width: 25%; padding: 10px; background: #28a745; color: white; border: none; cursor: pointer; }
+        .link-box { font-size: 0.8em; margin-top: 5px; }
+        a { color: #007bff; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <h3 style="text-align:center">Atendimento Virtual RF/MEI</h3>
+    <div class="chat-box" id="chatBox">
+        <div class="bot-msg"><strong>Bot:</strong> Olá! Sou seu assistente virtual. Sobre o que quer falar hoje?</div>
+    </div>
+    <div style="display:flex; justify-content: space-between;">
+        <input type="text" id="userInput" placeholder="Digite sua dúvida...">
+        <button onclick="enviarMensagem()">Enviar</button>
+    </div>
+</div>
+
+<script>
+    function enviarMensagem() {
+        var input = document.getElementById("userInput");
+        var msg = input.value;
+        if(msg.trim() === "") return;
+
+        var chatBox = document.getElementById("chatBox");
+        chatBox.innerHTML += `<div class="user-msg"><strong>Você:</strong> ${msg}</div>`;
+        input.value = "";
+
+        // Envia para o Python (Flask)
+        fetch('/get_response', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: `msg=${encodeURIComponent(msg)}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            let respostaHTML = `<div class="bot-msg"><strong>Bot:</strong> ${data.resposta}</div>`;
+            
+            // Adiciona links oficiais do JSON
+            if(data.links_locais.length > 0){
+                respostaHTML += `<div class="bot-msg link-box"><strong>Fontes Oficiais:</strong><br>`;
+                data.links_locais.forEach(link => {
+                    respostaHTML += `<a href="${link}" target="_blank">🔗 Acessar Link</a><br>`;
+                });
+                respostaHTML += `</div>`;
+            }
+
+            // Adiciona links do Google (API)
+            if(data.links_google.length > 0){
+                respostaHTML += `<div class="bot-msg link-box"><strong>Busca Google:</strong><br>`;
+                data.links_google.forEach(item => {
+                    respostaHTML += `<a href="${item.link}" target="_blank">🔍 ${item.titulo}</a><br>`;
+                });
+                respostaHTML += `</div>`;
+            }
+
+            chatBox.innerHTML += respostaHTML;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        });
+    }
+
+    // Enviar com Enter
+    document.getElementById("userInput").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            enviarMensagem();
+        }
+    });
+</script>
+
+</body>
+</html>
