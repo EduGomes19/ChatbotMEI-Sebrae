@@ -3,17 +3,16 @@ import pandas as pd
 import json
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
-from googleapiclient.discovery import build # Biblioteca do Google
+from googleapiclient.discovery import build 
 
 app = Flask(__name__)
 
-# --- CONFIGURAÇÕES ---
+# --- CONFIGURAÇÕES das KEYs---
 GOOGLE_API_KEY = 'AIzaSyA8sDN7jWn0sHCLtchr7thnYLp81l9eIm4'  
 GOOGLE_CSE_CX = '523992075c2e64540'
 
-# --- 1. CARREGAMENTO E TREINAMENTO (Executa uma vez ao iniciar) ---
 try:
-    # Carrega dados (ajuste o caminho se necessário, mas idealmente deixe na mesma pasta)
+    # Carrega dados
     dados = pd.read_csv("perguntas.csv")
     
     # Treinamento
@@ -35,7 +34,6 @@ try:
 except Exception as e:
     print(f"Erro ao carregar arquivos: {e}")
 
-# --- FUNÇÃO DE BUSCA NO GOOGLE (ETAPAS 6 e 7) ---
 def buscar_no_google(termo):
     try:
         service = build("customsearch", "v1", developerKey=GOOGLE_API_KEY)
@@ -51,11 +49,10 @@ def buscar_no_google(termo):
         print(f"Erro na API do Google: {e}")
         return []
 
-# --- ROTAS DO FLASK (ETAPA 8) ---
 
 @app.route('/')
 def index():
-    # Renderiza a página HTML (vamos criar esse arquivo logo abaixo)
+    # Renderiza a página HTML
     return render_template('index.html')
 
 @app.route('/get_response', methods=['POST'])
@@ -65,11 +62,11 @@ def get_response():
     if not mensagem_usuario:
         return jsonify({'resposta': 'Por favor, digite algo.'})
 
-    # 1. Predição da IA
+    # Predição da IA
     vetor_pergunta = vetorizador.transform([mensagem_usuario])
     categoria_prevista = modelo.predict(vetor_pergunta)[0]
     
-    # 2. Busca resposta no JSON local
+    # Busca resposta no JSON local
     resp_data = respostas_db.get(categoria_prevista, None)
     
     resposta_final = ""
@@ -81,8 +78,6 @@ def get_response():
     else:
         resposta_final = "Desculpe, não encontrei uma resposta específica na minha base."
 
-    # 3. Integração com Google (Opcional: busca se não tiver links ou para complementar)
-    # Aqui vamos buscar no Google para enriquecer a resposta com +2 links externos
     resultados_google = buscar_no_google(f"Receita Federal {mensagem_usuario}")
     
     # Formata a resposta para o frontend

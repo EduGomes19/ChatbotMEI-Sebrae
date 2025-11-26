@@ -1,12 +1,13 @@
 # 🤖 ChatbotMEI-Sebrae: Assistente Virtual Fiscal (IR/MEI)
 
 <div style="background:#e8f2ff;border-left:6px solid #2b7be4;padding:12px;border-radius:6px;margin:8px 0">
-	<strong style="color:#0b3a66">Projeto de Estágio — Aplicação com Inteligência Artificial</strong>
-	<div style="color:#0b3a66;margin-top:6px">Chatbot para consultas sobre Imposto de Renda (IRPF) e Microempreendedor Individual (MEI). Interface web com Flask e componente de NLP para classificação de intenções.</div>
+	<strong style="color:#0b3a66">Projeto de Estágio — Aplicação com Inteligência Artificial<br></strong>
+	<div style="color:#0b3a66;margin-top:6px">Chatbot para consultas sobre Imposto de Renda (IRPF) e Microempreendedor Individual (MEI). Interface web com Flask e componente de NLP para classificação de intenções.<br></div>
 </div>
-## 📋 Sobre o Projeto
 
-O **ChatbotMEI-Sebrae** foi desenvolvido para auxiliar usuários com dúvidas fiscais recorrentes, oferecendo respostas rápidas e links para fontes oficiais. O sistema opera em duas frentes:
+📋 Sobre o Projeto
+
+- O **ChatbotMEI-Sebrae** foi desenvolvido para auxiliar usuários com dúvidas fiscais recorrentes, oferecendo respostas rápidas e links para fontes oficiais. O sistema opera em duas frentes:
 
 - **Base de Conhecimento Local:** modelo de Machine Learning (Naive Bayes) treinado em um dataset local para identificar intenções e retornar respostas rápidas.
 - **Busca Externa (Google Custom Search):** quando necessário, o bot realiza buscas para complementar respostas com links atualizados.
