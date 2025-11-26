@@ -5,7 +5,8 @@
 	<div style="color:#0b3a66;margin-top:6px">Chatbot para consultas sobre Imposto de Renda (IRPF) e Microempreendedor Individual (MEI). Interface web com Flask e componente de NLP para classificação de intenções.<br></div>
 </div>
 <br>
-📋 Sobre o Projeto <br>
+
+## 📋 Sobre o Projeto <br>
 
  O **ChatbotMEI-Sebrae** foi desenvolvido para auxiliar usuários com dúvidas fiscais recorrentes, oferecendo respostas rápidas e links para fontes oficiais. O sistema opera em duas frentes:
 
