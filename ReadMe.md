@@ -84,13 +84,13 @@ Abra o navegador em `http://127.0.0.1:5000/` (ou o endereço exibido no terminal
 ## 👥 Autoria
 
 Desenvolvido por:
-Eduardo Gomes da Silva
-Erick de Almeida Souza
-Maria Lívia Pinheiro do Nascimento
-Vinicius da Cruz Silva
-Pedro João Ribeiro de Oliveira
-Vinicius Sousa Cortez
-Cristiano Prosdocimi Ferreira
+- Eduardo Gomes da Silva
+- Erick de Almeida Souza
+- Maria Lívia Pinheiro do Nascimento
+- Vinicius da Cruz Silva
+- Pedro João Ribeiro de Oliveira
+- Vinicius Sousa Cortez
+- Cristiano Prosdocimi Ferreira
 
 Instituição: FMU - Faculdades Metropolitanas Unidas
 
