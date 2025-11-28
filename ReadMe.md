@@ -1,10 +1,7 @@
 # 🤖 ChatbotMEI-Sebrae: Assistente Virtual Fiscal (IR/MEI)
 
-<div style="background:#e8f2ff;border-left:6px solid #2b7be4;padding:12px;border-radius:6px;margin:8px 0">
-	<strong style="color:#0b3a66">Projeto de Estágio — Aplicação com Inteligência Artificial<br></strong>
-	<div style="color:#0b3a66;margin-top:6px">Chatbot para consultas sobre Imposto de Renda (IRPF) e Microempreendedor Individual (MEI). Interface web com Flask e componente de NLP para classificação de intenções.<br></div>
-</div>
-<br>
+**Projeto de Estágio — Aplicação com Inteligência Artificial**
+Chatbot para consultas sobre Imposto de Renda (IRPF) e Microempreendedor Individual (MEI). Interface web com Flask e componente de NLP para classificação de intenções.
 
 ## 📋 Sobre o Projeto <br>
 
@@ -46,30 +43,17 @@ Chatbot-Emotech/
 ## Instalação (PowerShell)
 
 ```powershell
-# criar e ativar virtualenv (Windows PowerShell)
-python -m venv .venv; .\.venv\Scripts\Activate.ps1
-
 # instalar dependências
-pip install -r requirements.txt
-# ou manualmente:
 pip install flask pandas scikit-learn google-api-python-client
 ```
-
-> Observação: se não existir `requirements.txt`, você pode criar um com as bibliotecas acima.
 
 ## Configuração de API (opcional)
 
 Para usar a busca externa do Google, defina as chaves em variáveis de ambiente ou no arquivo de configuração:
+"Observação de Segurança: As chaves de API foram configuradas no arquivo.py para facilitar a correção e testes do projeto. Em um ambiente de produção real, estas chaves não seriam compartilhadas."
 
 - `GOOGLE_API_KEY` = sua chave
 - `GOOGLE_CSE_CX` = seu ID de mecanismo de busca
-
-Exemplo (PowerShell):
-
-```powershell
-$env:GOOGLE_API_KEY = 'SUA_CHAVE'
-$env:GOOGLE_CSE_CX = 'SEU_CSE_ID'
-```
 
 ## Executando a aplicação
 
@@ -99,7 +83,14 @@ Abra o navegador em `http://127.0.0.1:5000/` (ou o endereço exibido no terminal
 
 ## 👥 Autoria
 
-Desenvolvido por: Grupo 1
+Desenvolvido por:
+Eduardo Gomes da Silva
+Erick de Almeida Souza
+Maria Lívia Pinheiro do Nascimento
+Vinicius da Cruz Silva
+Pedro João Ribeiro de Oliveira
+Vinicius Sousa Cortez
+Cristiano Prosdocimi Ferreira
 
 Instituição: FMU - Faculdades Metropolitanas Unidas
 
