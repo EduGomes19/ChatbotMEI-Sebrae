@@ -38,19 +38,19 @@ Chatbot-Emotech/
 ## ⚙️ Pré-requisitos
 
 - Python 3.11 ou superior
-- Recomendo criar um virtualenv antes de instalar dependências
 
 ## Instalação (PowerShell)
 
 ```powershell
 # instalar dependências
+winget install Python.Python.3.11
 pip install flask pandas scikit-learn google-api-python-client
 ```
 
 ## Configuração de API (opcional)
 
 Para usar a busca externa do Google, defina as chaves em variáveis de ambiente ou no arquivo de configuração:
-"Observação de Segurança: As chaves de API foram configuradas no arquivo.py para facilitar a correção e testes do projeto. Em um ambiente de produção real, estas chaves não seriam compartilhadas."
+"Observação de Segurança: As chaves de API foram configuradas no ChatbotEmotech.py para facilitar a correção e testes do projeto. Em um ambiente de produção real, estas chaves não seriam compartilhadas."
 
 - `GOOGLE_API_KEY` = sua chave
 - `GOOGLE_CSE_CX` = seu ID de mecanismo de busca
@@ -58,8 +58,10 @@ Para usar a busca externa do Google, defina as chaves em variáveis de ambiente 
 ## Executando a aplicação
 
 ```powershell
-# rodar a aplicação Flask (arquivo principal)
+cd (caminho do arquivo = ex: C:\Users\Usuário...)
 python ChatbotEmotech.py
+    ou
+pode abrir a pasta do programa em algum editor de código como vs code e rodar normalmente o arquivo ChatbotEmotech.py
 ```
 
 Abra o navegador em `http://127.0.0.1:5000/` (ou o endereço exibido no terminal).
