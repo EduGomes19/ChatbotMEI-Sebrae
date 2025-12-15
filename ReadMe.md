@@ -57,13 +57,12 @@ Para usar a busca externa do Google, defina as chaves em variáveis de ambiente 
 
 ## Executando a aplicação
 
+O programa pode ser executado pelo powershell com o seguinte código
 ```powershell
 cd (caminho do arquivo = ex: C:\Users\Usuário...)
 python ChatbotEmotech.py
-    ou
-pode abrir a pasta do programa em algum editor de código como o "Visual Studio Code",
-e rodar normalmente o arquivo ChatbotEmotech.py
 ```
+ou pode abrir a pasta do programa em algum editor de código como o "Visual Studio Code", e rodar normalmente o arquivo ChatbotEmotech.py
 
 Abra o navegador em `http://127.0.0.1:5000/` (ou o endereço exibido no terminal).
 
