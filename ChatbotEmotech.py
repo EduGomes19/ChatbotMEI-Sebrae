@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import pandas as pd
 import json
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from googleapiclient.discovery import build 
 
@@ -13,13 +13,13 @@ GOOGLE_CSE_CX = '523992075c2e64540'
 
 try:
     # Carrega dados
-    dados = pd.read_csv("perguntas.csv")
+    dados = pd.read_csv("perguntas.csv", header=None, names=["frase", "categoria"], encoding="utf-8")
     
     # Treinamento
     frases = dados["frase"].astype(str).tolist()
-    categorias = dados["categoria"].astype(str).tolist()
+    categorias = dados["categoria"].astype(str).str.strip().str.lower().tolist()
     
-    vetorizador = CountVectorizer()
+    vetorizador = TfidfVectorizer(ngram_range=(1,2))
     X = vetorizador.fit_transform(frases)
     
     modelo = MultinomialNB()
